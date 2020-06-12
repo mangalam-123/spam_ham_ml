@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>APP</title>
+	<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<style>
+
+	body {
+    background-color: white;
+    background-image: url("/static/css/cover2.jpg");
+    background-size:100%;
+    background-repeat: no-repeat;
+
+}
+.container{
+
+
+    background-repeat: no-repeat;
+    background-size:100%;
+    width:50px;
+    height:40px;
+    margin:0 auto;
+    }
+
+</style>
+<script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
+</head>
+<body>
+
+	<center>
+
+		<h2 style= "width:700px; margin-left:110px; height:90px;font-size:200%;font-weight:bold;">Spam/Ham Detector For Email Messages</h2>
+
+	</center>
+
+	<div class="containerz" style="margin:0 auto; width:900px; height:500px;font-weight:bold;text-align:center;">
+
+		<form action="{{ url_for('predict')}}" method="POST">
+		<h4 style="color:red;font-size:1.5rem;">Drop Your Mail Here</h4>
+			<div class="container">
+				<i class='far fa-hand-point-down' style='font-size:48px;color:red'></i>
+			</div>
+			<br>
+		<!-- <input type="text" name="comment"/> -->
+		<textarea id="editor" name="message" rows="4" cols="50" style="margin-top:20px;border:1px solid black;height:300px;width:900px;"></textarea>
+		<br/>
+
+		<input type="submit" class="btn-info-success" value="predict" style="">
+		<br>
+
+	</form>
+
+	</div>
+
+
+<script type="text/javascript">
+CKEDITOR.replace( 'editor',
+{
+toolbar : 'Basic',
+uiColor : '#eeeeee',
+width:  '900px',
+height: '250px'
+
+});
+</script>
+</body>
+</html>
