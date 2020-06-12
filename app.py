@@ -18,7 +18,6 @@ if not app.debug:
 
     app.logger.addHandler(file_handle)
 
-model = pickle.load(open('model.pkl', 'rb'))
 
 
 @app.route('/')
