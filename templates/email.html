@@ -24,7 +24,7 @@
     }
 
 </style>
-<script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
+<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 </head>
 <body>
 
@@ -36,7 +36,7 @@
 
 	<div class="containerz" style="margin:0 auto; width:900px; height:500px;font-weight:bold;text-align:center;">
 
-		<form action="{{ url_for('predict')}}" method="POST">
+		<form action="{{ url_for('predict')}}" method="POST" onsubmit="return validate_form ();">
 		<h4 style="color:red;font-size:1.5rem;">Drop Your Mail Here</h4>
 			<div class="container">
 				<i class='far fa-hand-point-down' style='font-size:48px;color:red'></i>
@@ -46,7 +46,7 @@
 		<textarea id="editor" name="message" rows="4" cols="50" style="margin-top:20px;border:1px solid black;height:300px;width:900px;"></textarea>
 		<br/>
 
-		<input type="submit" class="btn-info-success" value="predict" style="">
+		<input type="submit" class="btn-info-success" value="predict"  id="submit">
 		<br>
 
 	</form>
@@ -55,14 +55,25 @@
 
 
 <script type="text/javascript">
-CKEDITOR.replace( 'editor',
-{
-toolbar : 'Basic',
-uiColor : '#eeeeee',
-width:  '900px',
-height: '250px'
+tinymce.init({selector: "textarea",});
 
-});
+function validate_form(  ) {
+	 tinyMCE.triggerSave();
+
+	var emailContent = document.getElementById("editor").value;
+
+	if(emailContent != "")
+	{
+	return true;
+	}
+	else{
+	alert("Add some email content inside the box!");
+	return false;
+	}
+
+}
+
+
 </script>
 </body>
 </html>
